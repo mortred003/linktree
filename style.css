@@ -1,0 +1,135 @@
+body, html {
+  height: 100%;
+  
+}
+
+.falling-leaves {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 880px;
+  max-height: 880px;
+  transform: translate(-50%, 0) scale(1.2);
+  border: 20px solid #fff;
+  border-radius: 50px;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/125707/sidebar-bg.png) no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+
+  /* 🔥 Add this for blur + zoom animation */
+  filter: blur(15px);
+  animation: zoomFadeIn 1s ease-out forwards;
+}
+
+@keyframes zoomFadeIn {
+  0% {
+    transform: translate(-50%, 0) scale(1.2);
+    filter: blur(15px);
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.leaf-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+.leaf-scene div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/125707/leaf.svg) no-repeat;
+  background-size: 100%;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+}
+
+.falling-leaves, .leaf-scene {
+  pointer-events: none;
+}
+
+/* Allow interaction on content (links, buttons, etc.) */
+.content {
+  pointer-events: auto;
+}
+
+
+.content {
+  position: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 1s;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  color: #8e3b26; /* warm muted red-orange */
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+p {
+  color: #6b4226; /* medium brown for contrast */
+}
+
+/* === LINK BUTTONS === */
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #c47c48, #d89b6b);
+  border-radius: 30px;
+  padding: 12px 32px;
+  width: 220px;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.links a:hover {
+  background: linear-gradient(135deg, #d89b6b, #c47c48);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* === FOOTER === */
+footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #7b5742;
+  font-size: 0.85rem;
+  font-family: "Roboto Mono", monospace;
+}
+
